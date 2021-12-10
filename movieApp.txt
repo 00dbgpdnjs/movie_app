@@ -1,0 +1,16 @@
+async-await instead "then" hell
+
+< React Router >
+    $ npm install react-router-dom
+        react-router-dom has cool comps
+            - Route comp
+            - Link comp locate a user to other page without refleshing
+                <Link to={`/movie/${var}`}>
+                <Route path="/movie/:var" element={<Detail />} />
+            
+            Then how can I get the var on url
+                const x = useParams(); // const { x } = useParams();
+                console.log(x); >> {varName: 'value'} / >> value
+            
+            Finally, request the url according the pram to API
+                https://yts.mx/api/v2/movie_details.json?movie_id=${id}

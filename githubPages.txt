@@ -1,0 +1,44 @@
+< Deploy to github pages >
+
+$ npm i gh-pages
+    gh-pages package upload to github pages which make your project to website and distribute with domain
+
+1. Check a "build" script in package.json
+    If running  scripts, our website create production ready code
+        production ready: The code is compressed and everything is optimized.
+    (After $ npm run build, "build" folder is created) - It now become pre-cmd
+
+2. Create a repo on github
+    Do getSetup.txt in movieql dir
+
+    * RepoName
+    $ git remote -v
+    >> origin https://github.com/username/reopName (fetch)
+        origin https://github.com/username/reopName (push)
+
+3.bottom part of package.json
+    },
+    "homepage":"https://githubUsername.github.io/githubRepoName"
+
+4. Add "deploy" scripts
+    "deploy":"gh-pages -d build"
+    This script run gh-pages and get "build" dir. gh-pages upload build folder to "homepage"
+
+    And then add predeploy cmd
+        "predeploy":"npm run build"
+
+    $ npm run deploy ✅
+        - Include $ npm run build   
+
+5. Click "homepage"'s link. There's 404 cuz the update takes 5m
+
+6. If modifying or updating, run $ npm run deploy
+    Then the project is built auto and the result's folder is pushed to github pages
+
+* error : Error with Permissions-Policy header: Unrecognized feature: 'interest-cohort'.
+    -> Problem : Nothing can't see
+    -> Solution : not yet but i tried... 
+            - <Router>  ->  <Router basename={process.env.PUBLIC_URL}>
+                - Nothing can't see except to home page
+            - <Router>  ->  <Router basename="movie_app">
+            - <Route path="/movie/:id"  ->  <Route path={process.env.PUBLIC_URL + "/movie/:id"}
